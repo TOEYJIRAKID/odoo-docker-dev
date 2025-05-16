@@ -21,7 +21,7 @@ services:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
     # command: odoo -d odoo_db -i base --db_user=odoo --db_password=odoo --db_host=db
-    command: odoo -d odoo_db --db_user=odoo --db_password=odoo --db_host=db # Remove '-i base' after the first run
+    command: odoo -d odoo_db -u todo_list_module --dev=xml --db_user=odoo --db_password=odoo --db_host=db # remove '-i base' after the first run
 
 volumes:
   odoo-db-data:
