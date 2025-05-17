@@ -9,8 +9,8 @@ class TodoList(models.Model):
 
     name = fields.Char(string='Title', required=True)
     tag_ids = fields.Many2many('todo.tag', string='Tags')
-    date_start = fields.Date(string='Start Date', required=True)
-    date_end = fields.Date(string='End Date', required=True)
+    date_start = fields.Datetime(string='Start Date', required=True)
+    date_end = fields.Datetime(string='End Date', required=True)
     state = fields.Selection([
         ('draft', 'DRAFT'),
         ('in_progress', 'IN PROGRESS'),

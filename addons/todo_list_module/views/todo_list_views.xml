@@ -25,8 +25,8 @@
                             <field name="all_tasks_completed" invisible="1"/>
                         </group>
                         <group>
-                            <field name="date_start" placeholder="Pick start-date" readonly="state == 'complete'"/>
-                            <field name="date_end" placeholder="Pick end-date" readonly="state == 'complete'"/>
+                            <field name="date_start" placeholder="Pick start-date" readonly="state == 'complete'" widget="datetime"/>
+                            <field name="date_end" placeholder="Pick end-date" readonly="state == 'complete'" widget="datetime"/>
                         </group>
                     </group>
                     
