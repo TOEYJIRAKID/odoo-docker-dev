@@ -8,7 +8,6 @@ class TodoTask(models.Model):
     name = fields.Char(string='Task Name', required=True)
     description = fields.Text(string='Description')
     is_complete = fields.Boolean(string='Completed?', default=False)
-    sequence = fields.Integer(string='Sequence', default=10) # For ordering
+    sequence = fields.Integer(string='Sequence', default=10)
 
-    # To link the visibility of 'is_complete' to the parent's state
-    todo_list_state = fields.Selection(related='todo_list_id.state', string="Todo List Status", store=True)
+    # todo_list_state = fields.Selection(related='todo_list_id.state', string="Todo List Status", store=True)

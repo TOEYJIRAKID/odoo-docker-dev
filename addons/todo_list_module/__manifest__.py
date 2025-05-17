@@ -1,11 +1,11 @@
 {
     'name': 'Todo List',
-    'version': '17.0.1.0',
+    'version': '17.0.1.1',
     'summary': 'A simple application to manage Todo Lists.',
     'category': 'To-Do',
     'author': 'TOEYJIRA',
     'website': '',
-    'depends': ['base', 'mail'],
+    'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
         'data/todo_tag_data.xml',

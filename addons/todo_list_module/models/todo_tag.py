@@ -5,8 +5,7 @@ class TodoTag(models.Model):
     _description = 'Todo Tag'
 
     name = fields.Char(string='Tag Name', required=True)
-    # You can add a color field if you want to color-code tags
-    color = fields.Integer(string='Color Index')
+    color = fields.Integer(string='Color Index') # Optional
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)', "Tag name already exists!"),
