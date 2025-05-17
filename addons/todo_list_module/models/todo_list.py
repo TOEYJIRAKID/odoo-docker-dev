@@ -7,14 +7,14 @@ class TodoList(models.Model):
     _description = 'Todo List'
     _order = 'date_start, id'
 
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string='Title', required=True)
     tag_ids = fields.Many2many('todo.tag', string='Tags')
     date_start = fields.Date(string='Start Date', required=True)
     date_end = fields.Date(string='End Date', required=True)
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('in_progress', 'In Progress'),
-        ('complete', 'Complete')
+        ('draft', 'DRAFT'),
+        ('in_progress', 'IN PROGRESS'),
+        ('complete', 'COMPLETE')
     ], string='Status', default='draft')
     
     task_ids = fields.One2many('todo.task', 'todo_list_id', string='Tasks')

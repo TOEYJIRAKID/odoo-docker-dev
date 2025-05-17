@@ -15,29 +15,29 @@
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <h1>
-                            <field name="name" placeholder="Todo List Name" readonly="state == 'complete'"/>
-                        </h1>
+                        <group>
+                            <field name="name" placeholder="Enter title" readonly="state == 'complete'"/>
+                        </group>
                     </div>
                     <group>
                         <group>
-                            <field name="date_start" readonly="state == 'complete'"/>
-                            <field name="date_end" readonly="state == 'complete'"/>
+                            <field name="tag_ids" placeholder="Select tags" widget="many2many_tags" options="{'color_field': 'color'}" readonly="state == 'complete'"/>
+                            <field name="all_tasks_completed" invisible="1"/>
                         </group>
                         <group>
-                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" readonly="state == 'complete'"/>
-                            <field name="all_tasks_completed" invisible="1"/>
+                            <field name="date_start" placeholder="Pick start-date" readonly="state == 'complete'"/>
+                            <field name="date_end" placeholder="Pick end-date" readonly="state == 'complete'"/>
                         </group>
                     </group>
                     
                     <notebook>
-                        <page string="Tasks" name="tasks">
+                        <page string="List" name="tasks">
                             <field name="task_ids" readonly="state == 'complete'">
                                 <tree editable="bottom">
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="description"/>
-                                    <field name="is_done" column_invisible="parent.state != 'in_progress'"/>
+                                    <field name="is_done" column_invisible="parent.state == 'draft'"/>
                                 </tree>
                             </field>
                         </page>
