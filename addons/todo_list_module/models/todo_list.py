@@ -18,7 +18,7 @@ class TodoList(models.Model):
     ], string='Status', default='draft')
     
     task_ids = fields.One2many('todo.task', 'todo_list_id', string='Tasks')
-    participant_ids = fields.Many2many('res.users', string='Participants')
+    attendee_ids = fields.Many2many('res.users', string='Attendee')
     
     all_tasks_completed = fields.Boolean(compute='_compute_all_tasks_completed', store=True)
     active = fields.Boolean(default=True)
@@ -48,9 +48,9 @@ class TodoTask(models.Model):
     _description = 'Todo Task'
     _order = 'sequence, id'
 
-    name = fields.Char(string='Task Name', required=True)
+    name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
-    is_done = fields.Boolean(string='Done', default=False)
+    is_done = fields.Boolean(string='Is Complete', default=False)
     todo_list_id = fields.Many2one('todo.list', string='Todo List', ondelete='cascade', required=True)
     sequence = fields.Integer(string='Sequence', default=10)
     
