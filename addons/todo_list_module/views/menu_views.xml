@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_todo_root" 
+              name="Todo List" 
+              sequence="10" 
+              web_icon="todo_list,static/description/icon.png"/>
+    
+    <!-- Sub Menus -->
+    <menuitem id="menu_todo_list_all" 
+              name="All" 
+              parent="menu_todo_root" 
+              action="action_todo_list_all" 
+              sequence="10"/>
+    
+    <menuitem id="menu_todo_list_uncomplete" 
+              name="Uncomplete" 
+              parent="menu_todo_root" 
+              action="action_todo_list_uncomplete" 
+              sequence="20"/>
+    
+    <menuitem id="menu_todo_list_complete" 
+              name="Complete" 
+              parent="menu_todo_root" 
+              action="action_todo_list_complete" 
+              sequence="30"/>
+</odoo>

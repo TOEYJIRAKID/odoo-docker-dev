@@ -1,18 +1,20 @@
 {
     'name': 'Todo List',
-    'version': '17.0.1.1',
-    'summary': 'A simple application to manage Todo Lists.',
+    'version': '1.0.0',
+    'summary': 'Manage your todo lists',
     'category': 'To-Do',
     'author': 'TOEYJIRA',
-    'website': '',
+    'website': 'https://github.com/TOEYJIRAKID/odoo-docker-dev',
     'depends': ['base'],
     'data': [
+        'security/todo_security.xml',
         'security/ir.model.access.csv',
-        'data/todo_tag_data.xml',
+        'data/todo_tags_data.xml',
         'views/todo_list_views.xml',
-        'views/todo_menus.xml',
+        'views/menu_views.xml',
     ],
+    'demo': [],
     'installable': True,
     'application': True,
-    'auto_install': False
+    'auto_install': False,
 }
