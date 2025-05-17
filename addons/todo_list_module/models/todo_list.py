@@ -7,7 +7,7 @@ class TodoList(models.Model):
 
     name = fields.Char(string='Title', required=True, tracking=True)
     tag_ids = fields.Many2many('todo.tag', string='Tags')
-    start_date = fields.Datetime(string='Start Date', required=True, default=fields.Datetime.now, tracking=True)
+    start_date = fields.Datetime(string='Start Date', required=True, tracking=True)
     end_date = fields.Datetime(string='End Date', required=True, tracking=True)
     task_ids = fields.One2many('todo.task', 'todo_list_id', string='Tasks')
     attendee_ids = fields.Many2many('res.users', string='Attendees', domain=[('share', '=', False)], default=lambda self: self.env.user) # Internal users
