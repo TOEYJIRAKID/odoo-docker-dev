@@ -18,7 +18,12 @@ class TodoList(models.Model):
     ], string='Status', default='draft')
     
     task_ids = fields.One2many('todo.task', 'todo_list_id', string='Tasks')
-    attendee_ids = fields.Many2many('res.users', string='Attendee')
+
+    attendee_ids = fields.Many2many(
+        'res.users', 
+        string='Attendee',
+        domain=[('share', '=', False)]
+    )
     
     all_tasks_completed = fields.Boolean(compute='_compute_all_tasks_completed', store=True)
     active = fields.Boolean(default=True)
