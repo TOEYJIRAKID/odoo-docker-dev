@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_todo_list_module_todo_list_module,todo_list_module.todo_list_module,model_todo_list_module_todo_list_module,base.group_user,1,1,1,1
+access_todo_list_user,todo.list.user,model_todo_list,base.group_user,1,1,1,1
+access_todo_task_user,todo.task.user,model_todo_task,base.group_user,1,1,1,1
+access_todo_tag_user,todo.tag.user,model_todo_tag,base.group_user,1,1,1,1
