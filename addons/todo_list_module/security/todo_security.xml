@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- กฎการเข้าถึงสำหรับ Todo List สำหรับ Internal User -->
     <record id="todo_list_rule_internal" model="ir.rule">
         <field name="name">Todo List: Internal User Access</field>
         <field name="model_id" ref="model_todo_list"/>
@@ -7,6 +8,7 @@
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
     </record>
     
+    <!-- กฎการเข้าถึงสำหรับ Todo Task สำหรับ Internal User -->
     <record id="todo_task_rule_internal" model="ir.rule">
         <field name="name">Todo Task: Internal User Access</field>
         <field name="model_id" ref="model_todo_task"/>

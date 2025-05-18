@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <!-- Default tags and Colors-->
+        <!-- ชื่อและสีเริ่มต้นสำหรับแต่ละแท็ก-->
         <record id="tag_work" model="todo.tag">
             <field name="name">Work</field>
             <field name="color">1</field>

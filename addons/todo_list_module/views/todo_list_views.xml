@@ -6,19 +6,25 @@
         <field name="model">todo.list</field>
         <field name="arch" type="xml">
             <form string="Todo List">
+                <!-- ส่วนหัวของฟอร์มแสดงสถานะและปุ่มดำเนินการ -->
                 <header>
+                    <!-- ปุ่ม PROGRESS แสดงเฉพาะเมื่อสถานะเป็น draft -->
                     <button name="action_start_progress" string="PROGRESS" type="object" 
                             class="oe_highlight" invisible="state != 'draft'"/>
+                    <!-- ปุ่ม DONE แสดงเฉพาะเมื่อสถานะไม่ใช่ complete และงานย่อยทั้งหมดเสร็จสิ้น -->
                     <button name="action_mark_done" string="DONE" type="object" 
                             class="oe_highlight" invisible="state == 'complete' or all_tasks_completed == False"/>
+                    <!-- Status Bar แสดงสถานะปัจจุบัน -->
                     <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,complete"/>
                 </header>
                 <sheet>
+                    <!-- ส่วนหัวข้อรายการ Todo -->
                     <div class="oe_title">
                         <group>
                             <field name="name" placeholder="Enter title" readonly="state == 'complete'"/>
                         </group>
                     </div>
+                    <!-- ข้อมูลทั่วไป -->
                     <group>
                         <group>
                             <field name="tag_ids" placeholder="Select tags" widget="many2many_tags" options="{'color_field': 'color'}" readonly="state == 'complete'"/>
@@ -30,7 +36,9 @@
                         </group>
                     </group>
                     
+                    <!-- แท็บข้อมูลต่างๆ -->
                     <notebook>
+                        <!-- แท็บรายการงานย่อย -->
                         <page string="List" name="tasks">
                             <field name="task_ids" readonly="state == 'complete'">
                                 <tree editable="bottom">
@@ -41,6 +49,7 @@
                                 </tree>
                             </field>
                         </page>
+                        <!-- แท็บผู้เข้าร่วม -->
                         <page string="Attendee" name="attendee">
                             <field name="attendee_ids" readonly="state == 'complete'">
                                 <tree editable="bottom">
@@ -59,6 +68,7 @@
         <field name="name">todo.list.tree</field>
         <field name="model">todo.list</field>
         <field name="arch" type="xml">
+            <!-- การตกแต่งแถวรายการ: สีจาง = เสร็จสิ้น, สีฟ้า = กำลังดำเนินการ, สีแดง = เลยกำหนดและยังไม่เสร็จ -->
             <tree string="Todo Lists" decoration-muted="state=='complete'" decoration-info="state=='in_progress'" decoration-danger="date_end&lt;current_date and state!='complete'">
                 <field name="name" width="30%"/>
                 <field name="date_start" width="20%"/>
@@ -75,13 +85,16 @@
         <field name="model">todo.list</field>
         <field name="arch" type="xml">
             <search string="Search Todo Lists">
+                <!-- ฟิลด์ค้นหา -->
                 <field name="name"/>
                 <field name="tag_ids"/>
                 <field name="attendee_ids"/>
+                <!-- ตัวกรองสถานะ -->
                 <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
                 <filter string="In Progress" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
                 <filter string="Complete" name="complete" domain="[('state', '=', 'complete')]"/>
                 <filter string="Uncomplete" name="uncomplete" domain="[('state', '!=', 'complete')]"/>
+                <!-- การจัดกลุ่ม -->
                 <group expand="0" string="Group By">
                     <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
                     <filter string="Start Date" name="group_by_date_start" context="{'group_by': 'date_start'}"/>
@@ -91,6 +104,7 @@
     </record>
     
     <!-- Actions -->
+    <!-- แสดงรายการ Todo ทั้งหมด -->
     <record id="action_todo_list_all" model="ir.actions.act_window">
         <field name="name">Todo List</field>
         <field name="res_model">todo.list</field>
@@ -102,6 +116,7 @@
         </field>
     </record>
     
+    <!-- แสดงรายการ Todo ที่ยังไม่เสร็จ -->
     <record id="action_todo_list_uncomplete" model="ir.actions.act_window">
         <field name="name">Todo List</field>
         <field name="res_model">todo.list</field>
@@ -114,6 +129,7 @@
         </field>
     </record>
     
+    <!-- แสดงรายการ Todo ที่เสร็จแล้ว -->
     <record id="action_todo_list_complete" model="ir.actions.act_window">
         <field name="name">Todo List</field>
         <field name="res_model">todo.list</field>
