@@ -1,6 +1,5 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from datetime import datetime
 
 class TodoList(models.Model):
     _name = 'todo.list'
@@ -26,7 +25,6 @@ class TodoList(models.Model):
     )
     
     all_tasks_completed = fields.Boolean(compute='_compute_all_tasks_completed', store=True)
-    active = fields.Boolean(default=True)
     
     @api.depends('task_ids', 'task_ids.is_done')
     def _compute_all_tasks_completed(self):
@@ -39,7 +37,7 @@ class TodoList(models.Model):
     @api.constrains('date_start', 'date_end')
     def _check_dates(self):
         for record in self:
-            if record.date_start and record.date_end and record.date_start > record.date_end:
+            if record.date_start and record.date_end and record.date_start >= record.date_end:
                 raise ValidationError(_("End date must be greater than start date."))
     
     def action_start_progress(self):
@@ -61,14 +59,12 @@ class TodoTask(models.Model):
     
     @api.model
     def create(self, vals):
-        task = super(TodoTask, self).create(vals)
-        # Check if all tasks are completed after adding a new one
+        task = super().create(vals)
         task.todo_list_id._compute_all_tasks_completed()
         return task
     
     def write(self, vals):
-        result = super(TodoTask, self).write(vals)
-        # Recompute all_tasks_completed when a task is marked as done
+        result = super().write(vals)
         if 'is_done' in vals:
             for task in self:
                 task.todo_list_id._compute_all_tasks_completed()

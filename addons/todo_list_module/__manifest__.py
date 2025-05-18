@@ -1,6 +1,6 @@
 {
     'name': 'Todo List',
-    'version': '1.0.0',
+    'version': '1.0',
     'summary': 'Manage your todo lists',
     'category': 'To-Do',
     'author': 'TOEYJIRA',
@@ -13,7 +13,6 @@
         'views/todo_list_views.xml',
         'views/menu_views.xml',
     ],
-    'demo': [],
     'installable': True,
     'application': True,
     'auto_install': False,
